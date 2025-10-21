@@ -22,8 +22,8 @@ A complete, production-ready development environment for Next.js with PostgreSQL
 
 1. **Download/Clone this repository**
    ```bash
-   git clone <your-repo-url>
-   cd nextjs-skeleton
+   git clone https://github.com/tildemark/skeleton-js.git
+   cd skeleton-js
    ```
 
 2. **Open in VS Code**
@@ -70,7 +70,7 @@ Your project will have:
 ## Project Structure
 
 ```
-nextjs-skeleton/
+skeleton-js/
 │
 ├── .devcontainer/              # DevContainer configuration
 │   ├── devcontainer.json       # VS Code container settings
