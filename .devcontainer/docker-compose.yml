@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspace:cached
+    command: sleep infinity
+    networks:
+      - nextjs_network
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://nextjs_user:nextjs_password@db:5432/nextjs_db
+      - NODE_ENV=development
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - nextjs_network
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: nextjs_user
+      POSTGRES_PASSWORD: nextjs_password
+      POSTGRES_DB: nextjs_db
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    restart: unless-stopped
+    networks:
+      - nextjs_network
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+networks:
+  nextjs_network:
+    driver: bridge
+
+volumes:
+  postgres-data:
+  pgadmin-data:
