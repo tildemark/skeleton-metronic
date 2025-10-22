@@ -4,6 +4,7 @@ FROM node:20-bullseye
 RUN apt-get update && apt-get install -y \
     git \
     postgresql-client \
+    dos2unix \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory

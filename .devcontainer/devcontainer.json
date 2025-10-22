@@ -1,5 +1,5 @@
 {
-    "name": "Next.js + Postgres DevContainer",
+    "name": "Metronic Next.js + Postgres",
     "dockerComposeFile": "docker-compose.yml",
     "service": "app",
     "workspaceFolder": "/workspace",
@@ -18,16 +18,13 @@
                 "editor.defaultFormatter": "esbenp.prettier-vscode",
                 "editor.codeActionsOnSave": {
                     "source.fixAll.eslint": "explicit"
-                }
+                },
+                "files.eol": "\n"
             }
         }
     },
-    "postCreateCommand": "bash .devcontainer/setup.sh",
-    "forwardPorts": [
-        3000,
-        5050,
-        5432
-    ],
+    "postCreateCommand": "dos2unix .devcontainer/setup.sh && bash .devcontainer/setup.sh",
+    "forwardPorts": [3000, 5050, 5432],
     "portsAttributes": {
         "3000": {
             "label": "Next.js App",

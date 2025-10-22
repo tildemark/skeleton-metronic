@@ -1,259 +1,106 @@
-# Next.js + TypeScript + Postgres Skeleton
+# Skeleton Metronic
 
-A complete, production-ready development environment for Next.js with PostgreSQL, using VS Code DevContainers.
+A production-ready Next.js starter template with Metronic theme, PostgreSQL database, and DevContainer support.
 
-## What's Included
+## 🚀 Features
 
-- **Next.js 15** - Latest with App Router
-- **TypeScript** - Type-safe development
-- **PostgreSQL 16** - Powerful relational database
-- **Prisma** - Modern ORM with migrations
-- **pgAdmin** - Web-based database management
-- **Tailwind CSS** - Utility-first styling
-- **Docker DevContainer** - Consistent development environment
+- ⚡ **Next.js 15** - React framework with App Router
+- 🎨 **Metronic Theme** - Premium admin dashboard theme from ThemeForest
+- 💾 **PostgreSQL** - Robust relational database
+- 🔷 **Prisma ORM** - Type-safe database client
+- 🐳 **DevContainer** - Consistent development environment
+- 🎯 **TypeScript** - Full type safety
+- 🎨 **Tailwind CSS** - Utility-first CSS framework
+- 📊 **pgAdmin** - Database management interface
 
-## What You Need
+## 📋 Prerequisites
 
-- **Docker Desktop** - Download: https://www.docker.com/products/docker-desktop
-- **Visual Studio Code** - Download: https://code.visualstudio.com/
-- **Dev Containers Extension** - Install from VS Code Extensions panel
+- [Docker Desktop](https://www.docker.com/products/docker-desktop)
+- [VS Code](https://code.visualstudio.com/)
+- [Dev Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+- Valid Metronic license from ThemeForest
 
-## Quick Start
+## 🛠️ Quick Start
 
-1. **Download/Clone this repository**
+### Option 1: Automated Setup (Recommended)
+
+1. **Clone or download this repository**
+
    ```bash
-   git clone https://github.com/tildemark/skeleton-js.git
-   cd skeleton-js
+   git clone https://github.com/tildemark/skeleton-metronic.git
+   cd skeleton-metronic
    ```
 
-2. **Open in VS Code**
+2. **Run the setup script** (if not already run)
+
    ```bash
-   code .
+   bash quick-setup.sh
    ```
 
-3. **Reopen in Container**
-   - VS Code will detect the DevContainer
-   - Click "Reopen in Container" when prompted
-   - OR press `F1` → type "Dev Containers: Reopen in Container"
+3. **Open in DevContainer**
+   - Open folder in VS Code
+   - Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac)
+   - Select: **"Dev Containers: Reopen in Container"**
+   - Wait for container to build (3-5 minutes first time)
 
-4. **Wait for Setup** (2-5 minutes first time)
-   - The setup script will automatically:
-     - Install all dependencies
-     - Set up PostgreSQL database
-     - Initialize Prisma
-     - Create example schema and seed data
-     - Configure Next.js
-   - **Note:** The setup only installs everything, it does NOT start the dev server automatically
+4. **Start development**
 
-5. **Start the Development Server**
-   
-   After setup completes, open a terminal in VS Code (inside the container):
-   - Press `` Ctrl+` `` (backtick) or go to **Terminal → New Terminal**
-   - Run:
-     ```bash
-     npm run dev
-     ```
-   - Wait for the message: `✓ Ready in XXXms`
-   - **Keep this terminal running** while developing
+   ```bash
+   npm run dev
+   ```
 
-6. **Access Your Application**
-   - Next.js App: http://localhost:3000 (only after running `npm run dev`)
-   - pgAdmin: http://localhost:5050 (available immediately after container starts)
-   - API Health Check: http://localhost:3000/api/health (only after running `npm run dev`)
+5. **Access your application**
+   - **App**: http://localhost:3000
+   - **pgAdmin**: http://localhost:5050
+   - **API Health**: http://localhost:3000/api/health
 
-## After Installation
+### Option 2: Manual Setup
 
-Your project will have:
-- ✅ Next.js 15 with App Router
-- ✅ TypeScript configured
-- ✅ PostgreSQL database running
-- ✅ Prisma ORM with example schema
-- ✅ Sample User and Post models
-- ✅ Database seeded with example data
-- ✅ Tailwind CSS configured
-- ✅ API health check endpoint
-- ✅ pgAdmin for database management
+If you're starting from a fresh Metronic download:
 
-**Important:** The setup script only installs everything. You need to manually start the dev server:
+1. **Extract Metronic Next.js template** to a new folder
+2. **Copy DevContainer files** from this repo:
+   - `.devcontainer/` folder
+   - `.gitattributes` file
+3. **Follow steps 3-5** from Option 1 above
 
-```bash
-npm run dev
-```
-
-This gives you control over when to start/stop the server and makes debugging easier.
-
-## Project Structure
+## 📁 Project Structure
 
 ```
-nextjs-skeleton/
-│
-├── .devcontainer/              # DevContainer configuration
-│   ├── devcontainer.json       # VS Code container settings
-│   ├── docker-compose.yml      # Multi-container orchestration
-│   ├── Dockerfile              # Node.js image definition
-│   └── setup.sh                # Automatic setup script
-│
-├── src/
-│   ├── app/                    # Next.js App Router
-│   │   ├── api/                # API routes
-│   │   │   └── health/
-│   │   │       └── route.ts    # Health check endpoint
-│   │   ├── layout.tsx          # Root layout
-│   │   ├── page.tsx            # Home page
-│   │   └── globals.css         # Global styles
-│   │
-│   ├── components/             # React components
-│   │   └── ui/                 # UI components
-│   │
-│   ├── lib/                    # Utility functions
-│   │   └── prisma.ts           # Prisma client singleton
-│   │
-│   └── types/                  # TypeScript types
-│       └── index.ts
-│
-├── prisma/
-│   ├── schema.prisma           # Database schema
-│   ├── migrations/             # Database migrations
-│   └── seed.ts                 # Database seeder
-│
-├── public/                     # Static assets
-│
-├── .env                        # Environment variables (not in Git)
-├── .env.example                # Environment template
-├── .gitignore
-├── next.config.ts              # Next.js configuration
-├── tsconfig.json               # TypeScript configuration
-├── tailwind.config.ts          # Tailwind CSS config
-├── postcss.config.js
-├── package.json
-└── README.md
+skeleton-metronic/
+├── .devcontainer/          # DevContainer configuration
+│   ├── devcontainer.json   # VS Code DevContainer settings
+│   ├── docker-compose.yml  # Docker services (app, db, pgadmin)
+│   ├── Dockerfile          # Container image definition
+│   └── setup.sh            # Automated setup script
+├── prisma/                 # Database schema & migrations
+│   ├── schema.prisma       # Database models
+│   └── seed.ts             # Database seeding
+├── src/                    # Source code (or app/ depending on Metronic version)
+│   ├── app/                # Next.js App Router
+│   │   ├── api/           # API routes
+│   │   │   └── health/    # Health check endpoint
+│   │   ├── layout.tsx     # Root layout
+│   │   └── page.tsx       # Homepage
+│   ├── components/         # React components
+│   ├── lib/               # Utilities
+│   │   └── prisma.ts      # Prisma client singleton
+│   └── ...                # Other Metronic folders
+├── public/                 # Static assets
+├── .env                    # Environment variables (not in git)
+├── .env.example            # Environment template
+├── .gitattributes         # Git line ending configuration
+├── .gitignore             # Git ignore rules
+├── package.json           # Dependencies and scripts
+├── tsconfig.json          # TypeScript configuration
+└── README.md              # This file
 ```
 
-## Database Management
+## 🔧 Configuration
 
-### Using pgAdmin (Web GUI)
+### Environment Variables
 
-1. Open pgAdmin: http://localhost:5050
-2. Login with:
-   - Email: `admin@admin.com`
-   - Password: `admin`
-3. Add a new server:
-   - **Name:** NextJS DB
-   - **Host:** `db`
-   - **Port:** `5432`
-   - **Database:** `nextjs_db`
-   - **Username:** `nextjs_user`
-   - **Password:** `nextjs_password`
-
-### Using Prisma Studio
-
-```bash
-npm run db:studio
-```
-
-Opens at http://localhost:5555
-
-### Prisma Commands
-
-```bash
-# Generate Prisma Client (after schema changes)
-npm run db:generate
-
-# Push schema changes to database (development)
-npm run db:push
-
-# Create a new migration
-npm run db:migrate
-
-# Deploy migrations (production)
-npm run db:migrate:deploy
-
-# Seed the database
-npm run db:seed
-
-# Open Prisma Studio
-npm run db:studio
-```
-
-### Command Line Access
-
-```bash
-# Connect to PostgreSQL
-PGPASSWORD=nextjs_password psql -h db -U nextjs_user -d nextjs_db
-
-# Run a query
-PGPASSWORD=nextjs_password psql -h db -U nextjs_user -d nextjs_db -c "SELECT * FROM \"User\";"
-```
-
-## Creating Your First Feature
-
-### 1. Update the Prisma Schema
-
-Edit `prisma/schema.prisma`:
-
-```prisma
-model Product {
-  id          String   @id @default(cuid())
-  name        String
-  description String?
-  price       Decimal
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
-```
-
-### 2. Create Migration
-
-```bash
-npm run db:migrate
-# Enter migration name: "add_product_model"
-```
-
-### 3. Create API Route
-
-Create `src/app/api/products/route.ts`:
-
-```typescript
-import { NextResponse } from 'next/server'
-import { prisma } from '@/lib/prisma'
-
-export async function GET() {
-  const products = await prisma.product.findMany()
-  return NextResponse.json(products)
-}
-
-export async function POST(request: Request) {
-  const body = await request.json()
-  const product = await prisma.product.create({ data: body })
-  return NextResponse.json(product)
-}
-```
-
-### 4. Create a Page
-
-Create `src/app/products/page.tsx`:
-
-```typescript
-export default async function ProductsPage() {
-  const res = await fetch('http://localhost:3000/api/products')
-  const products = await res.json()
-  
-  return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4">Products</h1>
-      <ul>
-        {products.map((product: any) => (
-          <li key={product.id}>{product.name}</li>
-        ))}
-      </ul>
-    </div>
-  )
-}
-```
-
-## Environment Variables
-
-The `.env` file is automatically created with:
+The `.env` file is automatically created during setup:
 
 ```env
 # Database
@@ -262,168 +109,273 @@ DATABASE_URL="postgresql://nextjs_user:nextjs_password@db:5432/nextjs_db"
 # Next.js
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 NODE_ENV=development
+
+# Metronic Theme
+NEXT_PUBLIC_THEME_MODE=light
 ```
 
-To add more variables:
-1. Add to `.env` file
-2. Update `.env.example` (without sensitive values)
-3. Restart dev server
+### Database Credentials
 
-## Troubleshooting
+**PostgreSQL:**
 
-### Port 3000 Shows "Can't Connect"
+- Host: `db` (internal) or `localhost` (external)
+- Port: `5432`
+- Database: `nextjs_db`
+- Username: `nextjs_user`
+- Password: `nextjs_password`
 
-The dev server isn't running. You need to start it manually:
+**pgAdmin:**
 
-1. Open terminal in VS Code (`` Ctrl+` ``)
-2. Run: `npm run dev`
-3. Wait for "Ready" message
-4. Now visit http://localhost:3000
+- URL: http://localhost:5050
+- Email: `admin@admin.com`
+- Password: `admin`
 
-The container setup only installs everything - you control when to start the server.
+To connect pgAdmin to PostgreSQL:
 
-### Port Already in Use
+1. Open http://localhost:5050
+2. Login with credentials above
+3. Right-click "Servers" → Register → Server
+4. General tab: Name = `NextJS DB`
+5. Connection tab:
+   - Host: `db`
+   - Port: `5432`
+   - Database: `nextjs_db`
+   - Username: `nextjs_user`
+   - Password: `nextjs_password`
 
-If port 3000 is already in use, change it in `.devcontainer/docker-compose.yml`:
+## 📦 Available Scripts
 
-```yaml
-app:
-  ports:
-    - "3001:3000"  # Change 3000 to 3001
+### Development
+
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
 ```
 
-Then rebuild: `F1` → "Dev Containers: Rebuild Container"
+### Database
 
-### Database Connection Failed
+```bash
+npm run db:studio    # Open Prisma Studio (database GUI)
+npm run db:push      # Push schema changes to database
+npm run db:migrate   # Create and run migrations
+npm run db:seed      # Seed database with initial data
+npm run db:generate  # Generate Prisma Client
+```
 
-1. Check if PostgreSQL is ready:
-   ```bash
-   PGPASSWORD=nextjs_password psql -h db -U nextjs_user -d nextjs_db -c '\q'
+## 🗄️ Database Management
+
+### Prisma Studio
+
+Visual database editor:
+
+```bash
+npm run db:studio
+```
+
+Opens at http://localhost:5555
+
+### pgAdmin
+
+Full-featured PostgreSQL management:
+
+1. Open http://localhost:5050
+2. Login with credentials from Configuration section
+3. Register server using connection details above
+
+### Command Line
+
+Direct PostgreSQL access:
+
+```bash
+# Inside DevContainer
+psql postgresql://nextjs_user:nextjs_password@db:5432/nextjs_db
+```
+
+## 🎨 Customization
+
+### Adding Database Models
+
+1. **Edit `prisma/schema.prisma`**
+
+   ```prisma
+   model YourModel {
+     id        String   @id @default(cuid())
+     name      String
+     createdAt DateTime @default(now())
+   }
    ```
 
-2. If error, wait 30 seconds and try again (first time setup)
+2. **Push changes to database**
 
-3. Regenerate Prisma Client:
+   ```bash
+   npm run db:push
+   ```
+
+3. **Generate Prisma Client**
    ```bash
    npm run db:generate
    ```
 
-### Container Won't Start
+### Using Prisma in Your Code
 
-1. Check Docker Desktop is running
-2. Check Docker logs:
-   ```bash
-   docker-compose -f .devcontainer/docker-compose.yml logs
-   ```
-3. Rebuild container:
-   - Press `F1`
-   - Type "Dev Containers: Rebuild Container"
-   - Press Enter
+```typescript
+import { prisma } from '@/lib/prisma';
 
-### Permission Denied
-
-If you get permission errors, run inside container:
-```bash
-sudo chown -R node:node /workspace
+// In API routes or Server Components
+const users = await prisma.user.findMany();
 ```
 
-### Slow Performance (macOS)
+### Creating API Routes
 
-The `:cached` volume mount is already configured for better performance on macOS.
+Create files in `src/app/api/` (or `app/api/`):
 
-## Customization
+```typescript
+// src/app/api/users/route.ts
+import { NextResponse } from 'next/server';
+import { prisma } from '@/lib/prisma';
 
-### Change Database Credentials
+export async function GET() {
+  const users = await prisma.user.findMany();
+  return NextResponse.json(users);
+}
 
-Edit `.devcontainer/docker-compose.yml`:
-
-```yaml
-db:
-  environment:
-    POSTGRES_USER: your_user
-    POSTGRES_PASSWORD: your_password
-    POSTGRES_DB: your_database
+export async function POST(request: Request) {
+  const body = await request.json();
+  const user = await prisma.user.create({ data: body });
+  return NextResponse.json(user);
+}
 ```
 
-Update `.env` file to match, then rebuild container.
+## 🐛 Troubleshooting
 
-### Add More VS Code Extensions
+### Line Ending Issues
 
-Edit `.devcontainer/devcontainer.json`:
+**Error:** `$'\r': command not found`
 
-```json
-"extensions": [
-  "dbaeumer.vscode-eslint",
-  "your.extension.id"
-]
-```
+**Solution:**
 
-### Change Node.js Version
+1. Open `setup.sh` in VS Code
+2. Click "CRLF" in bottom-right corner
+3. Select "LF"
+4. Save file
+5. Rebuild container
 
-Edit `.devcontainer/Dockerfile`:
+### Port Already in Use
 
-```dockerfile
-FROM node:18-bullseye  # or node:21-bullseye
-```
+**Error:** Port 3000/5432/5050 already in use
 
-## Available Scripts
+**Solution:**
 
 ```bash
-# Development
-npm run dev          # Start Next.js dev server (REQUIRED to access the app)
-npm run build        # Build for production
-npm run start        # Start production server
-npm run lint         # Run ESLint
+# Find and kill process (Windows)
+netstat -ano | findstr :3000
+taskkill /PID <PID> /F
 
-# Database
-npm run db:generate  # Generate Prisma Client
-npm run db:push      # Push schema to database
-npm run db:migrate   # Create and run migration
-npm run db:seed      # Seed database
-npm run db:studio    # Open Prisma Studio
+# Or change port in docker-compose.yml
 ```
 
-**Note:** You must run `npm run dev` to start the Next.js development server. The container setup does not start it automatically.
+### Database Connection Failed
 
-## Production Deployment
+**Solution:**
 
-Before deploying to production:
+```bash
+# Check if containers are running
+docker ps
 
-1. **Update environment variables**
-   - Change database credentials
-   - Set `NODE_ENV=production`
-   - Add production database URL
+# Restart containers
+docker-compose -f .devcontainer/docker-compose.yml restart
 
-2. **Disable debug mode**
-   - Remove pgAdmin service
-   - Set proper logging levels
+# Check logs
+docker logs <container-name>
+```
 
-3. **Security checklist**
-   - Enable SSL/HTTPS
-   - Configure CORS properly
-   - Set up proper authentication
-   - Enable security headers
-   - Configure rate limiting
+### Cannot Find Module '@/lib/prisma'
 
-4. **Run migrations**
-   ```bash
-   npm run db:migrate:deploy
+**Solution:**
+
+1. Ensure Prisma Client is generated: `npm run db:generate`
+2. Check `tsconfig.json` has correct path mapping:
+   ```json
+   {
+     "compilerOptions": {
+       "paths": {
+         "@/*": ["./src/*"] // or ["./*"] depending on structure
+       }
+     }
+   }
    ```
 
-## Resources
+### DevContainer Build Fails
 
-- **Next.js Documentation:** https://nextjs.org/docs
-- **Prisma Documentation:** https://www.prisma.io/docs
-- **PostgreSQL Documentation:** https://www.postgresql.org/docs/
-- **Tailwind CSS:** https://tailwindcss.com/docs
-- **DevContainers:** https://code.visualstudio.com/docs/devcontainers/containers
+**Solution:**
 
-## License
+```bash
+# Clean Docker cache
+docker system prune -a
 
-MIT
+# Rebuild without cache
+# In VS Code: Ctrl+Shift+P → "Dev Containers: Rebuild Container Without Cache"
+```
+
+## 🔒 Security Notes
+
+⚠️ **Important for Production:**
+
+1. **Change default credentials** in `docker-compose.yml` and `.env`
+2. **Never commit `.env`** to version control (already in `.gitignore`)
+3. **Use strong passwords** for database and pgAdmin
+4. **Enable authentication** for your application
+5. **Review Metronic security** best practices in their documentation
+
+## 📚 Resources
+
+- [Metronic Documentation](https://docs.keenthemes.com/metronic-nextjs)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Prisma Documentation](https://www.prisma.io/docs)
+- [PostgreSQL Documentation](https://www.postgresql.org/docs/)
+- [DevContainers Documentation](https://containers.dev/)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Commit changes: `git commit -am 'Add feature'`
+4. Push to branch: `git push origin feature-name`
+5. Submit a pull request
+
+## 📝 License
+
+This starter template is based on:
+
+- **Metronic** - Requires valid license from ThemeForest
+- **Next.js** - MIT License
+- **Prisma** - Apache 2.0 License
+
+Please ensure you have proper licenses for all components.
+
+## 🆘 Support
+
+- **Issues**: [GitHub Issues](https://github.com/tildemark/skeleton-metronic/issues)
+- **Metronic Support**: [Metronic Support Portal](https://devs.keenthemes.com/)
+- **Discussions**: [GitHub Discussions](https://github.com/tildemark/skeleton-metronic/discussions)
+
+## ✨ What's Next?
+
+After setup, consider adding:
+
+- [ ] Authentication (NextAuth.js recommended)
+- [ ] Authorization & role-based access control
+- [ ] API middleware for logging/validation
+- [ ] Error handling & monitoring (Sentry)
+- [ ] Testing setup (Jest, Playwright)
+- [ ] CI/CD pipeline (GitHub Actions)
+- [ ] Production deployment (Vercel, Railway)
+- [ ] Email service integration
+- [ ] File upload handling
+- [ ] Caching strategy (Redis)
 
 ---
 
-**Questions?** Open an issue on GitHub!
-
-**Happy Coding!** 🚀
+Made with ❤️ by [tildemark](https://github.com/tildemark)
