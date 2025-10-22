@@ -64,7 +64,7 @@ fi
 
 # Create .env file if it doesn't exist
 if [ ! -f ".env" ]; then
-  echo "📝 Creating .env file..."
+  echo "🔐 Creating .env file..."
   cat > .env << 'EOF'
 # Database
 DATABASE_URL="postgresql://nextjs_user:nextjs_password@db:5432/nextjs_db"
@@ -286,7 +286,6 @@ import { prisma } from '@/lib/prisma'
 
 export async function GET() {
   try {
-    // Check database connection
     await prisma.$queryRaw`SELECT 1`
     
     return NextResponse.json({
@@ -424,7 +423,7 @@ fi
 echo ""
 echo "🎉 Setup complete!"
 echo ""
-echo "📍 Your application is ready at:"
+echo "🌐 Your application is ready at:"
 echo "   - Next.js App: http://localhost:3000"
 echo "   - pgAdmin: http://localhost:5050"
 echo "   - API Health: http://localhost:3000/api/health"
@@ -433,7 +432,7 @@ echo "📊 pgAdmin credentials:"
 echo "   - Email: admin@admin.com"
 echo "   - Password: admin"
 echo ""
-echo "🗄️  Database connection (for pgAdmin):"
+echo "🗄️ Database connection (for pgAdmin):"
 echo "   - Host: db"
 echo "   - Port: 5432"
 echo "   - Database: nextjs_db"
