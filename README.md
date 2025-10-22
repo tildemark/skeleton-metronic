@@ -43,16 +43,23 @@ A complete, production-ready development environment for Next.js with PostgreSQL
      - Initialize Prisma
      - Create example schema and seed data
      - Configure Next.js
+   - **Note:** The setup only installs everything, it does NOT start the dev server automatically
 
-5. **Start Development**
-   ```bash
-   npm run dev
-   ```
+5. **Start the Development Server**
+   
+   After setup completes, open a terminal in VS Code (inside the container):
+   - Press `` Ctrl+` `` (backtick) or go to **Terminal → New Terminal**
+   - Run:
+     ```bash
+     npm run dev
+     ```
+   - Wait for the message: `✓ Ready in XXXms`
+   - **Keep this terminal running** while developing
 
 6. **Access Your Application**
-   - Next.js App: http://localhost:3000
-   - pgAdmin: http://localhost:5050
-   - API Health Check: http://localhost:3000/api/health
+   - Next.js App: http://localhost:3000 (only after running `npm run dev`)
+   - pgAdmin: http://localhost:5050 (available immediately after container starts)
+   - API Health Check: http://localhost:3000/api/health (only after running `npm run dev`)
 
 ## After Installation
 
@@ -67,10 +74,18 @@ Your project will have:
 - ✅ API health check endpoint
 - ✅ pgAdmin for database management
 
+**Important:** The setup script only installs everything. You need to manually start the dev server:
+
+```bash
+npm run dev
+```
+
+This gives you control over when to start/stop the server and makes debugging easier.
+
 ## Project Structure
 
 ```
-skeleton-js/
+nextjs-skeleton/
 │
 ├── .devcontainer/              # DevContainer configuration
 │   ├── devcontainer.json       # VS Code container settings
@@ -256,6 +271,17 @@ To add more variables:
 
 ## Troubleshooting
 
+### Port 3000 Shows "Can't Connect"
+
+The dev server isn't running. You need to start it manually:
+
+1. Open terminal in VS Code (`` Ctrl+` ``)
+2. Run: `npm run dev`
+3. Wait for "Ready" message
+4. Now visit http://localhost:3000
+
+The container setup only installs everything - you control when to start the server.
+
 ### Port Already in Use
 
 If port 3000 is already in use, change it in `.devcontainer/docker-compose.yml`:
@@ -344,7 +370,7 @@ FROM node:18-bullseye  # or node:21-bullseye
 
 ```bash
 # Development
-npm run dev          # Start Next.js dev server
+npm run dev          # Start Next.js dev server (REQUIRED to access the app)
 npm run build        # Build for production
 npm run start        # Start production server
 npm run lint         # Run ESLint
@@ -356,6 +382,8 @@ npm run db:migrate   # Create and run migration
 npm run db:seed      # Seed database
 npm run db:studio    # Open Prisma Studio
 ```
+
+**Note:** You must run `npm run dev` to start the Next.js development server. The container setup does not start it automatically.
 
 ## Production Deployment
 
